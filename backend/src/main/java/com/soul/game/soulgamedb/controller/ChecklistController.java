@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
+
 /**
  * Boss检查清单控制器
  * 提供Boss完成状态查询和切换功能
@@ -52,8 +54,8 @@ public class ChecklistController {
         // 固定用户ID为1
         Long userId = 1L;
         
-        // 获取所有Boss列表
-        List<BossList> allBosses = bossListRepository.findAll();
+        // 获取所有Boss列表 - 按难度等级升序排序（先简单后难），然后按ID排序
+        List<BossList> allBosses = bossListRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
         
         // 获取该用户的所有检查记录
         List<UserChecklist> userChecklists = userChecklistRepository.findByUserId(userId);
@@ -127,7 +129,7 @@ public class ChecklistController {
         userChecklistRepository.save(checklist);
 
         // 重新计算进度百分比
-        List<BossList> allBosses = bossListRepository.findAll();
+        List<BossList> allBosses = bossListRepository.findAll(Sort.by(Sort.Direction.ASC, "difficultyLevel").and(Sort.by(Sort.Direction.ASC, "id")));
         long totalBosses = allBosses.size();
         long completedBosses = userChecklistRepository.countByUserIdAndIsCompleted(userId, true);
         int progressPercent = totalBosses > 0 ? (int) ((completedBosses * 100) / totalBosses) : 0;
