@@ -16,6 +16,12 @@ const routes = [
     name: 'Home',
     // 组件，使用懒加载方式
     component: () => import('@/views/HomeView.vue')
+  },
+  {
+    // 攻略详情页面
+    path: '/guide/:id',
+    name: 'GuideDetail',
+    component: () => import('@/views/GuideDetailView.vue')
   }
 ]
 

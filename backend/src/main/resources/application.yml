@@ -11,6 +11,7 @@ spring:
   application:
     name: soul-game-db
 
+
   # 数据源配置
   datasource:
     url: jdbc:mysql://localhost:3306/soul_game_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
@@ -41,3 +42,11 @@ logging:
     org.hibernate.SQL: DEBUG
     # SQL参数日志
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+springdoc:
+  swagger-ui:
+    # 自定义 Swagger HTML 页面的访问路径，默认是 /swagger-ui.html
+    path: /swagger-ui.html
+  api-docs:
+    # 后端生成的 OpenAPI 规范 JSON 数据的接口路径
+    path: /v3/api-docs

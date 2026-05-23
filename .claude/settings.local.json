@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($url = \"https://github.com/tporadowski/redis/releases/download/v5.0.14/Redis-x64-5.0.14.zip\"; $out = \"$env:TEMP\\\\redis.zip\"; Write-Output \"Downloading Redis from $url ...\"; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -Uri $url -OutFile $out -UseBasicParsing; Write-Output \"Download complete: $out\")",
+      "PowerShell(Test-Path *)",
+      "Bash(powershell *)"
+    ]
+  }
+}
