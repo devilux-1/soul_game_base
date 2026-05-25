@@ -50,3 +50,18 @@ springdoc:
   api-docs:
     # 后端生成的 OpenAPI 规范 JSON 数据的接口路径
     path: /v3/api-docs
+
+# Steam API配置
+steam:
+  api:
+    key: ${steam.api.key}
+    base-url: https://api.steampowered.com
+
+# JWT配置
+jwt:
+  secret: your-super-secret-key-at-least-256-bits-long-for-hs256-change-this-in-production
+  expiration: 86400000
+
+# 前端URL配置
+frontend:
+  url: ${FRONTEND_URL:http://localhost:5173}
